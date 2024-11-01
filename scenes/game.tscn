@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://dss0xcwml8kjv"]
+
+[ext_resource type="PackedScene" uid="uid://dg0j5vde1m1av" path="res://scenes/snake.tscn" id="1_6bl0s"]
+[ext_resource type="Texture2D" uid="uid://cqisjp5us1yve" path="res://assets/top-bottom-wall.png" id="2_d1q3g"]
+[ext_resource type="Script" path="res://scripts/collisions.gd" id="3_unsis"]
+[ext_resource type="Script" path="res://scripts/foodBuild.gd" id="5_wqeei"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Snake" parent="." node_paths=PackedStringArray("walls") instance=ExtResource("1_6bl0s")]
+walls = NodePath("../Walls")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="Walls" type="Node" parent="."]
+script = ExtResource("3_unsis")
+
+[node name="bottomWall" type="Sprite2D" parent="Walls" groups=["walls"]]
+position = Vector2(0, 480)
+scale = Vector2(1.933, 1)
+texture = ExtResource("2_d1q3g")
+
+[node name="topWall" type="Sprite2D" parent="Walls" groups=["walls"]]
+position = Vector2(0, -480)
+scale = Vector2(1.933, 1)
+texture = ExtResource("2_d1q3g")
+
+[node name="leftWall" type="Sprite2D" parent="Walls" groups=["walls"]]
+position = Vector2(-896, 0)
+rotation = -1.5708
+texture = ExtResource("2_d1q3g")
+
+[node name="rightWall" type="Sprite2D" parent="Walls" groups=["walls"]]
+position = Vector2(896, 0)
+rotation = 1.5708
+texture = ExtResource("2_d1q3g")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="FoodSpawner" type="Node" parent="."]
+script = ExtResource("5_wqeei")

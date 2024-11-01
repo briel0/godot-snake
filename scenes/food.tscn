@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://w04j562neol6"]
+
+[node name="Food" type="Sprite2D"]
