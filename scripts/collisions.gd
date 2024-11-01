@@ -1,7 +1,5 @@
 extends Node
 
-var info
-
 var foodBuild
 
 func _ready():	
@@ -12,8 +10,6 @@ func _ready():
 		"up" : get_node("topWall").position,
 		"down" : get_node("bottomWall").position
 	}
-
-	foodBuild = get_parent().get_node("FoodSpawner")
 
 func checkWall(headPosition):
 	if(not headPosition):

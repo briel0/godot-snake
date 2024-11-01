@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dss0xcwml8kjv"]
+[gd_scene load_steps=6 format=3 uid="uid://dss0xcwml8kjv"]
 
-[ext_resource type="PackedScene" uid="uid://dg0j5vde1m1av" path="res://scenes/snake.tscn" id="1_6bl0s"]
+[ext_resource type="Script" path="res://scripts/snake.gd" id="1_oydy2"]
 [ext_resource type="Texture2D" uid="uid://cqisjp5us1yve" path="res://assets/top-bottom-wall.png" id="2_d1q3g"]
 [ext_resource type="Script" path="res://scripts/collisions.gd" id="3_unsis"]
+[ext_resource type="PackedScene" uid="uid://b26cvsuw8b6xx" path="res://scenes/ui_layer.tscn" id="5_4ib8i"]
 [ext_resource type="Script" path="res://scripts/foodBuild.gd" id="5_wqeei"]
 
 [node name="Game" type="Node2D"]
 
-[node name="Snake" parent="." node_paths=PackedStringArray("walls") instance=ExtResource("1_6bl0s")]
-walls = NodePath("../Walls")
+[node name="Snake" type="Node" parent="."]
+script = ExtResource("1_oydy2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
@@ -42,3 +43,5 @@ autostart = true
 
 [node name="FoodSpawner" type="Node" parent="."]
 script = ExtResource("5_wqeei")
+
+[node name="UILayer" parent="." instance=ExtResource("5_4ib8i")]

@@ -1,10 +1,6 @@
 extends Node
 
-var foodPosition: Vector2
-
 var blockSize = 32
-
-var info
 
 func _ready():
 	spawnFood()
