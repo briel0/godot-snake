@@ -1,7 +1,5 @@
 extends Node
 
-var foodBuild
-
 func _ready():	
 	Info.walls = get_node("Walls")
 	Info.wallPos = {

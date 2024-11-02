@@ -6,13 +6,14 @@ var collisions
 
 var foodBuild
 
+var ui
+
 const blockSize = 32
 
 func _ready():
 	collisions = get_parent().get_node("Walls")
 	foodBuild = get_parent().get_node("FoodSpawner")
-	
-	var parts = get_node("Parts")
+	ui = get_parent().get_node("UILayer")
 	
 	var head = Sprite2D.new()
 	head.position = Vector2(0, 0)
@@ -37,6 +38,9 @@ func _input(event: InputEvent):
 			break
 
 func on_timeout():
+	if(!Info.bodyParts):
+		pass
+
 	var newPosition = Info.bodyParts[0].position + Info.moveDirection * blockSize
 	moveTo(newPosition)
 
@@ -47,6 +51,7 @@ func on_timeout():
 		
 	if(collisions.checkSnake(newPosition) || collisions.checkWall(newPosition)):
 		timer.stop()
+		ui.onOver()
 	
 func moveTo(newPosition):
 	if(Info.bodyParts.size() > 1):
